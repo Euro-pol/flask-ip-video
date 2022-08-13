@@ -1,4 +1,3 @@
-from random import random
 import flask
 import ffmpeg
 import requests
