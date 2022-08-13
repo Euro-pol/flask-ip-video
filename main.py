@@ -19,10 +19,7 @@ def index():
         
     useragent = flask.request.headers.get('User-Agent')
     data = requests.get(f'https://ipapi.co/' + ip + '/json').json()
-    try:
-        funny = "".join(ip + "\n" + useragent + "\n" + data['country_name'] + "\n" + data['region'] + "\n" + data['city'] + "\n" + data['postal'] + "\n" + data['org'])  
-    except:
-        funny = "".join(ip + "\n" + useragent + "\n" + "no idea bro u just crashed the server")     
+    funny = "".join(ip + "\n" + useragent + "\n" + data['country_name'] + "\n" + data['region'] + "\n" + data['city'] + "\n" + data['postal'] + "\n" + data['org'])     
     stream = ffmpeg.input('template.mp4')
     stream = ffmpeg.drawtext(stream, text=funny, x=1, y=50, fontfile='font.ttf', fontsize=24, fontcolor='white')
     stream = ffmpeg.output(stream, stream, "renders/" + ip + '.mp4')
