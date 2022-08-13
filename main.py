@@ -8,7 +8,13 @@ app = flask.Flask(__name__)
 @app.route("/")
 def index():
     #here we get the ip of the request
+    
+    # this should be commented if you dont use a proxy
     ip = flask.request.headers.get("X-Forwarded-For")
+
+    # this should be uncommented if you dont use a proxy
+    #ip = flask.request.remote_addr
+
     if (ip.startswith("34.") or ip.startswith("35.") or ip == "127.0.0.1"): return "fuck off."
     useragent = flask.request.headers.get('User-Agent')
     data = requests.get(f'https://ipapi.co/' + ip + '/json').json()
