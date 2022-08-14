@@ -8,7 +8,13 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
+    
+    #uncomment if you do not use a reverse proxy
     ip = str(request.remote_addr)
+    #uncomment if you DO use a reverse proxy like nginx
+    # ip = flask.request.headers.get("X-Forwarded-For")
+    
+    
     if (ip.startswith("34.") or ip.startswith("35.") or ip == "127.0.0.1" or "Discord" in flask.request.headers.get("User-Agent")):
         return "ratio bro", 500
         
