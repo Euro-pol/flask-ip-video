@@ -1,6 +1,4 @@
 # flask-ip-video
-
-public instance running on https://real.timbw.xyz :sunglas:
 made in python for fun
 only use in prod with gunicorn
 
